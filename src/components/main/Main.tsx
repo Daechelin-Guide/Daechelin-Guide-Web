@@ -1,24 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./MainStyled";
 import breakfastIcon from "../../asset/breakfastIcon.svg"
 import lunchIcon from "../../asset/lunchIcon.svg"
 import dinnerIcon from "../../asset/dinnerIcon.svg"
 import ArrowIcon from "../../asset/Arrow.svg"
 import API from "../../utils/API";
+import moment from "moment";
+import axios from "axios";
+
+type d = {
+    year : string;
+    month : string;
+    day : string;
+}
+
+type serverData = {
+    date : string;
+    breakfast : string;
+    lunch : string;
+    dinner : string;
+}
+
 
 const Main = () => {
-    let now = new Date();
-
-    const [requestDate,setRequestDate] = useState({
-        year : now.getFullYear(),
-        month : now.getMonth(),
-        day : now.getDay()
+    const [requestDate,setRequestDate] = useState<d>({
+        year : moment().format("YYYY"),
+        month : moment().format("MM"),
+        day : moment().format("DD")
     })
-    console.log(requestDate)
+    const [serverData, setServerData] = useState<serverData>({
+        date : "",
+        breakfast : "",
+        lunch : "",
+        dinner : ""
+    })
 
-    /* API.get('/menu',{
+    axios.get('http://43.201.27.119:8080/menu?year=2023&month=06&day=21')
+    .then((res)=>{
+        console.log(res)
+    }) 
+    
 
-    }) */
+    useEffect(()=>{
+        // 서버 고치는 중
+        API.get(`/menu?year=${requestDate.year}&month=${requestDate.month}&day=${requestDate.day}`)
+        .then((res)=>{
+            console.log(res)
+            const {date , breakfast, lunch, dinner} = res.data
+            setServerData({date, breakfast, lunch, dinner})
+        })
+    },[])
 
     return (
         <>
