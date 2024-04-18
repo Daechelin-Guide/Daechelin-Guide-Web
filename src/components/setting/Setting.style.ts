@@ -38,7 +38,7 @@ export const ContentWrapper = styled.div`
     justify-content: space-between;
 
     width: 50rem;
-    height: 1.5rem;
+    height: fit-content;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
@@ -61,7 +61,7 @@ export const ContentComplexWrapper = styled.div`
     justify-content: end;
 
     width: 50rem;
-    height: 1.5rem;
+    height: fit-content;
     background: #FFFFFF;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     border-radius: 8px;

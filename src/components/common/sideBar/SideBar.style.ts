@@ -55,6 +55,8 @@ export const Nav = styled.div`
 
     display: flex;
     align-items: center;
+
+    cursor: pointer;
 `
 
 export const NavIcon = styled.img`

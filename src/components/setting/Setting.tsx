@@ -10,7 +10,11 @@ const Setting = () => {
             <S.Wrapper>
                 <S.ComponentWrapper>
                     <S.Label>학교 변경</S.Label>
-                    <S.ContentWrapper>
+                    <S.ContentWrapper
+                        onClick={()=>{
+                            alert("아직 대구소프트웨어마이스터고등학교밖에 지원하지 않습니다ㅜㅜ")
+                        }}
+                    >
                         대구소프트웨어마이스터고등학교
                         <S.Arrow direction="left" src={ArrowIcon} />
                     </S.ContentWrapper>
@@ -18,14 +22,18 @@ const Setting = () => {
 
                 <S.ComponentWrapper>
                     <S.Label>개인정보 관리</S.Label>
-                    <S.ContentWrapper>
+                    <S.ContentWrapper
+                        onClick={()=>{
+                            alert("웹은 개인정보 처리방침이 없습니다!\n(앱은 있어요)")
+                        }}
+                    >
                         개인정보 처리방침
                         <S.Arrow direction="left" src={ArrowIcon} />
                     </S.ContentWrapper>
                 </S.ComponentWrapper>
 
                 <S.ComponentWrapper>
-                    <S.Label>앱 정보</S.Label>
+                    <S.Label>웹 정보</S.Label>
 
                     <S.ContentWrapper>
                         현재 버전
@@ -35,7 +43,7 @@ const Setting = () => {
                     <S.ContentComplexWrapper>
                         개발팀
                         <S.Content>대소고 A급 남자들</S.Content>
-                        <S.Arrow direction={showEngineer ? "down" : "up"} src={ArrowIcon} onClick={()=>{setShowEngineer(!showEngineer)}} />
+                        <S.Arrow direction={showEngineer ? "up" : "down"} src={ArrowIcon} onClick={()=>{setShowEngineer(!showEngineer)}} />
                     </S.ContentComplexWrapper>
 
                     {
@@ -67,7 +75,11 @@ const Setting = () => {
 
                 <S.ComponentWrapper>
                     <S.Label>후원</S.Label>
-                    <S.ContentWrapper>
+                    <S.ContentWrapper
+                        onClick={()=>{
+                            alert("농협 00000000000 ㄱㅁㅈ 여기로 송금해주시면 됩니다~\n복 많이 받으세요🙇‍♀️")
+                        }}
+                    >
                         개발자들에게 커피 사주기
                         <S.Arrow direction="left" src={ArrowIcon} />
                     </S.ContentWrapper>
