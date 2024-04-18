@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     margin-left : 19rem;
     padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
 
     display: flex;
     justify-content: center;
     align-items: start;
 
     /* width: calc(100vw - 19rem); */
-    height: 100vh;
     background-color: #F9F9F9;
 `
 
@@ -51,6 +51,10 @@ export const RankingContentWrapper = styled.div<{color:string}>`
     /* background-color: pink; */
     box-shadow: 0px 0px 5px ${(props)=>(props.color)};
     border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 export const Circle = styled.div`
@@ -70,6 +74,8 @@ export const Crown = styled.img`
 `
 
 export const RankingInfo = styled.div`
+    width: 100%;
+
     padding-top: 1.5rem;
     padding-bottom: 1.2rem;
 
@@ -95,10 +101,12 @@ export const Date = styled.div`
 `
 
 export const RankingContent = styled.div`
-    margin-left: 1.5rem;
+    // margin-left: 1.5rem;
     width: 20rem;
 
     font-family: 'Pretendard';
     font-size: 1rem;
     color: #424242;
+
+    word-break:keep-all;
 `

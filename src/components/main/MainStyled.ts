@@ -50,6 +50,7 @@ export const MealComponent = styled.div<{color:string}>`
     margin-top: 2rem;
 
     display: flex;
+    justify-content: start;
     align-items: center;
 
     width : 60rem;
@@ -66,6 +67,9 @@ export const MealIcon = styled.img`
 
     width: 9rem;
     height: 9rem;
+`
+
+export const MealRightBox = styled.div`
 `
 
 export const MealInfo = styled.div`
@@ -104,12 +108,12 @@ export const Kcal = styled.div`
 
 export const MealContent = styled.div`
     margin-top: 1.5rem;
+    padding-right: 2.5rem;
 
-    width: 30rem;
     overflow: visible;
+    word-break: keep-all;
 
     font-family: 'Pretendard';
     font-size: 1.3rem;
     color: #424242;
-
 `

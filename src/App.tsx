@@ -7,6 +7,7 @@ import MainLayout from "./components/common/mainLayout/MainLayout";
 import Voting from "./components/voting/Voting";
 import Ranking from "./components/ranking/Ranking";
 import Setting from "./components/setting/Setting";
+import SignIn from './components/signIn';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path='/Voting' element={<Voting/>}/>
             <Route path='/Ranking' element={<Ranking/>}/>
             <Route path='/Setting' element={<Setting/>}/>
+            <Route path='/signIn' element={<SignIn/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
@@ -27,3 +29,5 @@ function App() {
 }
 
 export default App;
+
+

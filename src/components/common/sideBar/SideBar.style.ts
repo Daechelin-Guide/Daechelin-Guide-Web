@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { createGlobalStyle } from "styled-components";
 
 /* export const GlobalStyle = createGlobalStyle`
@@ -36,6 +37,10 @@ export const Title = styled.div`
 
     font-family: "Black Han Sans", sans-serif;
     font-size: 2rem;
+`
+
+export const NavWrapper = styled(Link)`
+    text-decoration: none;
 `
 
 export const Nav = styled.div`
