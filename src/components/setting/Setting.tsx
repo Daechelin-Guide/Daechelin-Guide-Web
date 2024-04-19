@@ -77,7 +77,7 @@ const Setting = () => {
                     <S.Label>후원</S.Label>
                     <S.ContentWrapper
                         onClick={()=>{
-                            alert("농협 00000000000 ㄱㅁㅈ 여기로 송금해주시면 됩니다~\n복 많이 받으세요🙇‍♀️")
+                            alert("suehyun@dgsw.hs.kr로 연락주세요🙇‍♀️")
                         }}
                     >
                         개발자들에게 커피 사주기
