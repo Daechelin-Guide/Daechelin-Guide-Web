@@ -9,6 +9,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <header>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    </header>
     <App />
   </React.StrictMode>
 );
