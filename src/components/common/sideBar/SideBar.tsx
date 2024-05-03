@@ -1,17 +1,13 @@
 import * as S from "./SideBar.style"
 
-import {ReactComponent as Home} from "../../../asset/Home.svg"
-
 import HomeIcon from "../../../asset/Home.svg"
 import MealIcon from "../../../asset/Meal.svg"
 import RankingIcon from "../../../asset/Ranking.svg"
 import SettingIcon from "../../../asset/Setting.svg"
-import { Link, redirect, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const SideBar = () => {
     const navigate = useNavigate();
-
-    const DAuthURL:string = process.env.REACT_APP_DAuthLink || ""
 
     return(
         <S.Wrapper>
@@ -25,7 +21,6 @@ const SideBar = () => {
                 <S.Nav onClick={()=>{
                     alert("아직 준비중인 기능입니다!")
                     navigate("/")
-                    // navigate('/Voting')
                 }}>
                     <S.NavIcon src={MealIcon} />
                     <S.NavTitle>급식 투표</S.NavTitle>
@@ -38,7 +33,6 @@ const SideBar = () => {
                     <S.NavIcon src={SettingIcon} />
                     <S.NavTitle>설정</S.NavTitle>
                 </S.Nav>
-                {/* <S.NavWrapper to={DAuthURL}> */}
                     <S.Nav
                         onClick={()=>{
                             alert("아직 준비중인 기능입니다!")
@@ -47,9 +41,7 @@ const SideBar = () => {
                     >
                         <S.NavIcon />
                         <S.NavTitle>로그인</S.NavTitle>
-                    </S.Nav>
-                {/* </S.NavWrapper> */}
-
+                </S.Nav>
             </S.Back>
         </S.Wrapper>
     )
