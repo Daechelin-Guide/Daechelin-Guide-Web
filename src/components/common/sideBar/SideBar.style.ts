@@ -1,19 +1,5 @@
 import { Link } from "react-router-dom";
-import styled, { createGlobalStyle } from "styled-components";
-
-/* export const GlobalStyle = createGlobalStyle`
-    @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
-    body{
-        background-color: #F9F9F9;
-        width: 30vw;
-    }
-
-    @font-face {
-    font-family: 'Pretendard-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-style: normal;
-}
-` */
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
     background-color: #F9F9F9;

@@ -9,7 +9,6 @@ export const Wrapper = styled.div`
     justify-content: center;
     align-items: start;
 
-    /* width: calc(100vw - 19rem); */
     background-color: #F9F9F9;
 `
 
@@ -48,7 +47,6 @@ export const RankingContentWrapper = styled.div<{color:string}>`
     height: 8rem;
 
     background: #FFFFFF;
-    /* background-color: pink; */
     box-shadow: 0px 0px 5px ${(props)=>(props.color)};
     border-radius: 10px;
 
@@ -70,7 +68,6 @@ export const Crown = styled.img`
     margin-left: 1.5rem;
 
     width: 1.5rem;
-    // height: 1.5rem;
 `
 
 export const RankingInfo = styled.div`
@@ -101,7 +98,6 @@ export const Date = styled.div`
 `
 
 export const RankingContent = styled.div`
-    // margin-left: 1.5rem;
     width: 20rem;
 
     font-family: 'Pretendard';

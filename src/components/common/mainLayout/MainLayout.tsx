@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom"
 import SideBar from "../sideBar/SideBar"
-import styled, { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 
 const MainLayout = () => {
     return (

@@ -7,12 +7,6 @@ import ArrowIcon from "../../asset/Arrow.svg"
 import API from "../../utils/API";
 import axios from "axios";
 
-type d = {
-    year : string;
-    month : string;
-    day : string;
-}
-
 type resMeal = {
     id: number,
     menu: string,
@@ -75,24 +69,16 @@ const Main = () => {
     }
 
     const moveOneDay = (direction:string) => {
-        if(direction == "right"){
+        if(direction === "right"){
             setCurrentTime(new Date(currentTime.setDate(currentTime.getDate() + 1)))
-            // currentTime = new Date(currentTime.setDate(currentTime.getDate() + 1))
         }
-        if(direction == "left"){
+        if(direction === "left"){
             setCurrentTime(new Date(currentTime.setDate(currentTime.getDate() - 1)))
-            // currentTime = new Date(currentTime.setDate(currentTime.getDate() - 1))
         }
-        // setCurrentTime(currentTime.getDate() + 1)
-
         updateDate()
     }
     
     useEffect(()=>{
-        // const currentYear = currentTime.getFullYear()
-        // const currentMonth = (currentTime.getMonth() + 1).toString().padStart(2,'0')
-        // const currentDay = currentTime.getDate()
-        
         axios.all([
             // 아침
             API.get(`/menu/detail?date=${requestDate}&mealType=TYPE_BREAKFAST`),

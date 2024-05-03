@@ -27,7 +27,6 @@ interface rankingType {
 }
 
 const Ranking = () => {
-    const MaxCnt:number[] = [1,2,3,4,5,6,7,8,9,10]
 
     let now = new Date();
 
@@ -96,9 +95,9 @@ const Ranking = () => {
                         rankingData.breakfastRanking.map((meal, index)=>(
                                 <S.RankingContentWrapper color="#FFAF51">
                                     <S.RankingInfo>
-                                        {index+1 == 1 && <S.Crown src={GoldCrownIcon} />}
-                                        {index+1 == 2 && <S.Crown src={SliverCrownIcon} />}
-                                        {index+1 == 3 && <S.Crown src={BronzeCrownIcon} />}
+                                        {index+1 === 1 && <S.Crown src={GoldCrownIcon} />}
+                                        {index+1 === 2 && <S.Crown src={SliverCrownIcon} />}
+                                        {index+1 === 3 && <S.Crown src={BronzeCrownIcon} />}
                                         {index+1 >= 4 && <S.Circle/>}
                                         <S.Rank color="#FFAF51">{meal.ranking}위</S.Rank>
                                         <S.Date>{now.getMonth()}월 {now.getDay()+index}일</S.Date>
@@ -118,9 +117,9 @@ const Ranking = () => {
                         rankingData.lunchRanking.map((meal, index)=>(
                                 <S.RankingContentWrapper color="#ABC97B">
                                     <S.RankingInfo>
-                                        {index+1 == 1 && <S.Crown src={GoldCrownIcon} />}
-                                        {index+1 == 2 && <S.Crown src={SliverCrownIcon} />}
-                                        {index+1 == 3 && <S.Crown src={BronzeCrownIcon} />}
+                                        {index+1 === 1 && <S.Crown src={GoldCrownIcon} />}
+                                        {index+1 === 2 && <S.Crown src={SliverCrownIcon} />}
+                                        {index+1 === 3 && <S.Crown src={BronzeCrownIcon} />}
                                         {index+1 >= 4 && <S.Circle/>}
                                         <S.Rank color="#ABC97B">{meal.ranking}위</S.Rank>
                                         <S.Date>{now.getMonth()}월 {now.getDay()+index}일</S.Date>
@@ -140,9 +139,9 @@ const Ranking = () => {
                         rankingData.dinnerRanking.map((meal, index)=>(
                                 <S.RankingContentWrapper color="#CF75CC">
                                     <S.RankingInfo>
-                                        {index+1 == 1 && <S.Crown src={GoldCrownIcon} />}
-                                        {index+1 == 2 && <S.Crown src={SliverCrownIcon} />}
-                                        {index+1 == 3 && <S.Crown src={BronzeCrownIcon} />}
+                                        {index+1 === 1 && <S.Crown src={GoldCrownIcon} />}
+                                        {index+1 === 2 && <S.Crown src={SliverCrownIcon} />}
+                                        {index+1 === 3 && <S.Crown src={BronzeCrownIcon} />}
                                         {index+1 >= 4 && <S.Circle/>}
                                         <S.Rank color="#CF75CC">{meal.ranking}위</S.Rank>
                                         <S.Date>{now.getMonth()}월 {now.getDay()+index}일</S.Date>
