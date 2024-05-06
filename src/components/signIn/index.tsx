@@ -1,25 +1,36 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
-import { redirect, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import API from '../../utils/API';
 
 // OAuth에서 이런 형태로 도착
 // http://localhost:3000/signIn?code=ad36bf84-e3b9-46fa-af90-8232498fdc49&state=null
 const SignIn = () => {
+    const navigate = useNavigate();
+
     const [queryParam] = useSearchParams()
+    const DAuthURL:string = process.env.REACT_APP_DAuthLink || ""
+    const isAdmin:boolean = localStorage.getItem("accessToken") ? true : false
 
     useEffect(()=>{
-        alert("준비 중인 기능입니다!!")
-        redirect("/")
+        if (isAdmin) {
+            alert("이미 로그인 되어있습니다.")
+            navigate("/")
+        } else if (queryParam.get('code') === null){
+            window.location.replace(DAuthURL)
+        } else {
+            API.post(`/auth/login?code=${queryParam.get('code')}`)
+            .then((res)=>{
+                console.log("correct request")
+                localStorage.setItem("accessToken",res.data.accessToken)
+                localStorage.setItem("refreshToken",res.data.refreshToken)
 
-        /*
-        axios.post(`http://54.180.155.53:8080/auth/login?code=${queryParam.get('code')}`)
-        .then((res)=>{
-            localStorage.setItem("accessToken",res.data.accessToken)
-            localStorage.setItem("refreshToken",res.data.refreshToken)
-        })
-        .catch((err)=>{
-            console.log(err)
-        }) */
+                navigate("/")
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+        }
     },[])
 
     return (

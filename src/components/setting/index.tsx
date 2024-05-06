@@ -1,10 +1,13 @@
-import * as S from "./Setting.style"
+import * as S from "./style"
 import ArrowIcon from "../../asset/Arrow.svg"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 const Setting = () => {
     const [showEngineer, setShowEngineer] = useState<boolean>(false);
-
+    const isAdmin:boolean = localStorage.getItem("accessToken") ? true : false
+    const navigate = useNavigate();
+    
     return (
         <>
             <S.Wrapper>
@@ -16,7 +19,7 @@ const Setting = () => {
                         }}
                     >
                         대구소프트웨어마이스터고등학교
-                        <S.Arrow direction="left" src={ArrowIcon} />
+                        <S.Arrow direction="left" />
                     </S.ContentWrapper>
                 </S.ComponentWrapper>
 
@@ -28,7 +31,7 @@ const Setting = () => {
                         }}
                     >
                         개인정보 처리방침
-                        <S.Arrow direction="left" src={ArrowIcon} />
+                        <S.Arrow direction="left" />
                     </S.ContentWrapper>
                 </S.ComponentWrapper>
 
@@ -43,7 +46,7 @@ const Setting = () => {
                     <S.ContentComplexWrapper>
                         개발팀
                         <S.Content>대소고 A급 남자들</S.Content>
-                        <S.Arrow direction={showEngineer ? "up" : "down"} src={ArrowIcon} onClick={()=>{setShowEngineer(!showEngineer)}} />
+                        <S.Arrow direction={showEngineer ? "up" : "down"} onClick={()=>{setShowEngineer(!showEngineer)}} />
                     </S.ContentComplexWrapper>
 
                     {
@@ -74,17 +77,27 @@ const Setting = () => {
                 </S.ComponentWrapper>
 
                 <S.ComponentWrapper>
-                    <S.Label>후원</S.Label>
-                    <S.ContentWrapper
-                        onClick={()=>{
-                            alert("suehyun@dgsw.hs.kr로 연락주세요🙇‍♀️")
-                        }}
-                    >
-                        개발자들에게 커피 사주기
-                        <S.Arrow direction="left" src={ArrowIcon} />
-                    </S.ContentWrapper>
+                    {
+                        isAdmin &&
+                        <>
+                            <S.Label>계정 관리</S.Label>
+                            <S.ContentWrapper
+                                color="red"
+                                onClick={()=>{
+                                    if (window.confirm("정말 로그아웃 하시겠습니까?")){
+                                        localStorage.removeItem("accessToken")
+                                        localStorage.removeItem("refreshToken")
+    
+                                        navigate("/")
+                                    }
+                                }}
+                            >
+                                로그아웃
+                                <S.Arrow direction="left" color="red"/>
+                            </S.ContentWrapper>
+                        </>
+                    }
                 </S.ComponentWrapper>
-
             </S.Wrapper>
         </>
     )

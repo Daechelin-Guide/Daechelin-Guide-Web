@@ -1,4 +1,4 @@
-import * as S from "./Ranking.style"
+import * as S from "./style"
 
 import breakfastIcon from "../../asset/breakfastIcon.svg"
 import lunchIcon from "../../asset/lunchIcon.svg"
@@ -10,59 +10,14 @@ import BronzeCrownIcon from "../../asset/BronzeCrown.svg"
 import { useEffect, useState } from "react"
 import API from "../../utils/API"
 import axios from "axios"
-
-interface eachMealRankingType {
-    id: number,
-    menu: string,
-    date: string,
-    cal: string,
-    totalScore: number,
-    ranking: number
-}
-
-interface rankingType {
-    breakfastRanking : eachMealRankingType[]
-    lunchRanking : eachMealRankingType[]
-    dinnerRanking : eachMealRankingType[]
-}
+import { eachMealRankingType, rankingType } from "./type"
 
 const Ranking = () => {
     const MaxCnt:number[] = [1,2,3,4,5,6,7,8,9,10]
 
     let now = new Date();
 
-    const [rankingData,setRankingData] = useState<rankingType>({
-        breakfastRanking : [
-            {
-                id: 0,
-                menu: "",
-                date: "",
-                cal: "",
-                totalScore: 0,
-                ranking: 0
-            }
-        ],
-        lunchRanking : [
-            {
-                id: 0,
-                menu: "",
-                date: "",
-                cal: "",
-                totalScore: 0,
-                ranking: 0
-            }
-        ],
-        dinnerRanking : [
-            {
-                id: 0,
-                menu: "",
-                date: "",
-                cal: "",
-                totalScore: 0,
-                ranking: 0
-            }
-        ]
-    })
+    const [rankingData,setRankingData] = useState<rankingType>()
 
     useEffect(()=>{
         axios.all([
@@ -75,13 +30,13 @@ const Ranking = () => {
             // 저녁
             API.get(`/ranking?mealType=TYPE_DINNER`)
         ])
-            .then(axios.spread((breakfastRankingData,lunchRankingData,dinnerRankingData) => {
-                setRankingData({
-                    breakfastRanking : breakfastRankingData.data.ranking.sort((a:eachMealRankingType,b:eachMealRankingType)=>a.ranking - b.ranking),
-                    lunchRanking : lunchRankingData.data.ranking.sort((a:eachMealRankingType,b:eachMealRankingType)=>a.ranking - b.ranking),
-                    dinnerRanking : dinnerRankingData.data.ranking.sort((a:eachMealRankingType,b:eachMealRankingType)=>a.ranking - b.ranking)
-                })
-            }))
+        .then(axios.spread((breakfastRankingData,lunchRankingData,dinnerRankingData) => {
+            setRankingData({
+                breakfastRanking : breakfastRankingData.data.ranking.sort((a:eachMealRankingType,b:eachMealRankingType)=>a.ranking - b.ranking),
+                lunchRanking : lunchRankingData.data.ranking.sort((a:eachMealRankingType,b:eachMealRankingType)=>a.ranking - b.ranking),
+                dinnerRanking : dinnerRankingData.data.ranking.sort((a:eachMealRankingType,b:eachMealRankingType)=>a.ranking - b.ranking)
+            })
+        }))
     },[])
 
     return (
@@ -93,15 +48,15 @@ const Ranking = () => {
                         조식랭킹
                     </S.TitleComponent>
                     {
-                        rankingData.breakfastRanking.map((meal, index)=>(
+                        rankingData?.breakfastRanking.map((meal, index)=>(
                                 <S.RankingContentWrapper color="#FFAF51">
                                     <S.RankingInfo>
-                                        {index+1 == 1 && <S.Crown src={GoldCrownIcon} />}
-                                        {index+1 == 2 && <S.Crown src={SliverCrownIcon} />}
-                                        {index+1 == 3 && <S.Crown src={BronzeCrownIcon} />}
+                                        {index+1 === 1 && <S.Crown src={GoldCrownIcon} />}
+                                        {index+1 === 2 && <S.Crown src={SliverCrownIcon} />}
+                                        {index+1 === 3 && <S.Crown src={BronzeCrownIcon} />}
                                         {index+1 >= 4 && <S.Circle/>}
                                         <S.Rank color="#FFAF51">{meal.ranking}위</S.Rank>
-                                        <S.Date>{now.getMonth()}월 {now.getDay()+index}일</S.Date>
+                                        <S.Date>{Math.round(meal.totalScore * 10) / 10}</S.Date>
                                     </S.RankingInfo>
                                     <S.RankingContent>{meal.menu}</S.RankingContent>
                                 </S.RankingContentWrapper>
@@ -115,15 +70,15 @@ const Ranking = () => {
                         중식랭킹
                     </S.TitleComponent>
                     {
-                        rankingData.lunchRanking.map((meal, index)=>(
+                        rankingData?.lunchRanking.map((meal, index)=>(
                                 <S.RankingContentWrapper color="#ABC97B">
                                     <S.RankingInfo>
-                                        {index+1 == 1 && <S.Crown src={GoldCrownIcon} />}
-                                        {index+1 == 2 && <S.Crown src={SliverCrownIcon} />}
-                                        {index+1 == 3 && <S.Crown src={BronzeCrownIcon} />}
+                                        {index+1 === 1 && <S.Crown src={GoldCrownIcon} />}
+                                        {index+1 === 2 && <S.Crown src={SliverCrownIcon} />}
+                                        {index+1 === 3 && <S.Crown src={BronzeCrownIcon} />}
                                         {index+1 >= 4 && <S.Circle/>}
                                         <S.Rank color="#ABC97B">{meal.ranking}위</S.Rank>
-                                        <S.Date>{now.getMonth()}월 {now.getDay()+index}일</S.Date>
+                                        <S.Date>{Math.round(meal.totalScore * 10) / 10}</S.Date>
                                     </S.RankingInfo>
                                     <S.RankingContent>{meal.menu}</S.RankingContent>
                                 </S.RankingContentWrapper>
@@ -137,23 +92,21 @@ const Ranking = () => {
                         석식랭킹
                     </S.TitleComponent>
                     {
-                        rankingData.dinnerRanking.map((meal, index)=>(
+                        rankingData?.dinnerRanking.map((meal, index)=>(
                                 <S.RankingContentWrapper color="#CF75CC">
                                     <S.RankingInfo>
-                                        {index+1 == 1 && <S.Crown src={GoldCrownIcon} />}
-                                        {index+1 == 2 && <S.Crown src={SliverCrownIcon} />}
-                                        {index+1 == 3 && <S.Crown src={BronzeCrownIcon} />}
+                                        {index+1 === 1 && <S.Crown src={GoldCrownIcon} />}
+                                        {index+1 === 2 && <S.Crown src={SliverCrownIcon} />}
+                                        {index+1 === 3 && <S.Crown src={BronzeCrownIcon} />}
                                         {index+1 >= 4 && <S.Circle/>}
                                         <S.Rank color="#CF75CC">{meal.ranking}위</S.Rank>
-                                        <S.Date>{now.getMonth()}월 {now.getDay()+index}일</S.Date>
+                                        <S.Date>{Math.round(meal.totalScore * 10) / 10}</S.Date>
                                     </S.RankingInfo>
                                     <S.RankingContent>{meal.menu}</S.RankingContent>
                                 </S.RankingContentWrapper>
                         ))
                     }
                 </S.ComponentsWrapper>
-
-                
             </S.Wrapper>
         </>
     )

@@ -30,17 +30,29 @@ export const Back = styled.div`
 
 export const Title = styled.div`
     padding-top: 4rem;
+    margin-bottom: 12rem;
     text-align: center;
 
     width: 100%;
-    height: 16rem;
 
     font-family: "Black Han Sans", sans-serif;
     font-size: 2rem;
+
+    position: relative;
 `
 
-export const NavWrapper = styled(Link)`
-    text-decoration: none;
+export const isAdminText = styled.div`
+    margin-top: -60%;
+    // margin-bottom: 10rem;
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    color: #FF8C8C;
+    font-weight: 600;
+
+    position: absolute;
 `
 
 export const Nav = styled.div`
@@ -70,7 +82,6 @@ export const NavIcon = styled.img`
 export const NavTitle = styled.div`
     margin-left: 1.5rem;
 
-    font-family: "Pretendard";
     font-weight: 600;
     font-size: 1rem;
 

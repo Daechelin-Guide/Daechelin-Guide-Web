@@ -1,34 +1,11 @@
 import React, { useEffect, useState } from "react";
-import * as S from "./MainStyled";
+import * as S from "./style";
 import breakfastIcon from "../../asset/breakfastIcon.svg"
 import lunchIcon from "../../asset/lunchIcon.svg"
 import dinnerIcon from "../../asset/dinnerIcon.svg"
-import ArrowIcon from "../../asset/Arrow.svg"
 import API from "../../utils/API";
 import axios from "axios";
-
-type d = {
-    year : string;
-    month : string;
-    day : string;
-}
-
-type resMeal = {
-    id: number,
-    menu: string,
-    date: string,
-    cal: string,
-    totalScore: number,
-    nutrients: string,
-    mealType: string
-}
-
-type serverData = {
-    date : string;
-    breakfast : resMeal;
-    lunch : resMeal;
-    dinner : resMeal;
-}
+import type { serverDataType } from "./type";
 
 const Main = () => {
     const [currentTime,setCurrentTime] = useState<Date>(new Date())
@@ -37,7 +14,7 @@ const Main = () => {
         `${currentTime.getFullYear().toString()}${(currentTime.getMonth() + 1).toString().padStart(2,'0')}${currentTime.getDate().toString().padStart(2,'0')}`
     )
     console.log(requestDate)
-    const [serverData, setServerData] = useState<serverData>({
+    const [serverData, setServerData] = useState<serverDataType>({
         date : "",
         breakfast : {
             id: 0,
@@ -77,22 +54,14 @@ const Main = () => {
     const moveOneDay = (direction:string) => {
         if(direction == "right"){
             setCurrentTime(new Date(currentTime.setDate(currentTime.getDate() + 1)))
-            // currentTime = new Date(currentTime.setDate(currentTime.getDate() + 1))
         }
         if(direction == "left"){
             setCurrentTime(new Date(currentTime.setDate(currentTime.getDate() - 1)))
-            // currentTime = new Date(currentTime.setDate(currentTime.getDate() - 1))
         }
-        // setCurrentTime(currentTime.getDate() + 1)
-
         updateDate()
     }
     
     useEffect(()=>{
-        // const currentYear = currentTime.getFullYear()
-        // const currentMonth = (currentTime.getMonth() + 1).toString().padStart(2,'0')
-        // const currentDay = currentTime.getDate()
-        
         axios.all([
             // 아침
             API.get(`/menu/detail?date=${requestDate}&mealType=TYPE_BREAKFAST`),
@@ -117,7 +86,7 @@ const Main = () => {
     return (
         <>
             <S.Wrapper>
-                <S.Arrow src={ArrowIcon} direction="left" onClick={()=>{moveOneDay("left")}}></S.Arrow>
+                <S.Arrow direction="left" onClick={()=>{moveOneDay("left")}}></S.Arrow>
 
                 <S.ContentWrapper>
                     <S.DateDiv>{serverData.date}</S.DateDiv>
@@ -164,7 +133,7 @@ const Main = () => {
                     </S.MealComponent>
                 </S.ContentWrapper>
 
-                <S.Arrow src={ArrowIcon} direction="right" onClick={()=>{moveOneDay("right")}}></S.Arrow>
+                <S.Arrow direction="right" onClick={()=>{moveOneDay("right")}}></S.Arrow>
 
             </S.Wrapper>
         </>

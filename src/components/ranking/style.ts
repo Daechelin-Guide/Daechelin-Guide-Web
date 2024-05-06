@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     margin-left : 19rem;
-    padding-top: 4.5rem;
-    padding-bottom: 4.5rem;
+    padding-top: 3.7vw;
+    padding-bottom: 3.7vw;
 
     display: flex;
     justify-content: center;
@@ -14,7 +14,8 @@ export const Wrapper = styled.div`
 `
 
 export const ComponentsWrapper = styled.div`
-    margin: 0 2rem;
+    margin: 0 1.6vw;
+    width: 18.3vw;
 `
 
 export const TitleComponent = styled.div<{color:string}>`
@@ -22,30 +23,29 @@ export const TitleComponent = styled.div<{color:string}>`
     justify-content: center;
     align-items: center;
 
-    width: 22rem;
-    height: 3.5rem;
+    width: 100%;
+    height: 2.9vw;
     background: #FFFFFF;
     border: 2px solid ${(props)=>(props.color)};
     border-radius: 10px;
 
-    font-family: 'Pretendard';
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 1.1vw;
     color: ${(props)=>(props.color)};
 `
 
 export const TitleIcon = styled.img`
     margin-right: 0.3rem;
 
-    width: 3rem;
-    height: 3rem;
+    width: 2.5vw;
+    height: 2.5vw;
 `
 
 export const RankingContentWrapper = styled.div<{color:string}>`
-    margin-top: 1rem;
+    margin-top: 1vw;
 
-    width: 22rem;
-    height: 8rem;
+    width: 100%;
+    height: 6.6vw;
 
     background: #FFFFFF;
     /* background-color: pink; */
@@ -58,26 +58,26 @@ export const RankingContentWrapper = styled.div<{color:string}>`
 `
 
 export const Circle = styled.div`
-    margin-left: 1.5rem;
+    margin-left: 1.2vw;
 
-    width: 1rem;
-    height: 1rem;
+    width: 0.8vw;
+    height: 0.8vw;
     border-radius: 50%;
     background-color: #7B7B7B;
 `
 
 export const Crown = styled.img`
-    margin-left: 1.5rem;
+    margin-left: 1.2vw;
 
-    width: 1.5rem;
+    width: 1.2vw;
     // height: 1.5rem;
 `
 
 export const RankingInfo = styled.div`
     width: 100%;
 
-    padding-top: 1.5rem;
-    padding-bottom: 1.2rem;
+    padding-top: 1.2vw;
+    padding-bottom: 1vw;
 
     display: flex;
     align-items: center;
@@ -86,26 +86,24 @@ export const RankingInfo = styled.div`
 export const Rank = styled.div<{color:string}>`
     margin-left: 0.6rem;
 
-    font-family: 'Pretendard';
-    font-size: 1.3rem;
+    font-size: 1vw;
     color: ${(props)=>(props.color)};
 
 `
 
 export const Date = styled.div`
-    margin-left: 1rem;
+    margin-left: 0.8vw;
 
     font-family: 'Pretendard';
-    font-size: 1.2rem;
+    font-size: 1vw;
     color: #C1C1C1;
 `
 
 export const RankingContent = styled.div`
     // margin-left: 1.5rem;
-    width: 20rem;
+    width: 85%;
 
-    font-family: 'Pretendard';
-    font-size: 1rem;
+    font-size: 0.8vw;
     color: #424242;
 
     word-break:keep-all;
